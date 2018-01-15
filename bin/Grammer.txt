@@ -1,0 +1,76 @@
+
+
+;;Mimic Grammar Rules
+
+program 		: statementList
+
+statementList 	: statement
+				| statement  statementList
+
+statement 		: expression  SEMI
+				| ifStatement
+				| whileStatement
+				| definition
+ 
+definition		: varDeclaration 
+				| funcDefinition
+
+varDeclaration  : VAR ID EQUALS expression SEMI
+
+funcDefinition	:  FUNC ID OPAREN optParamList CPAREN block
+ 
+optParamList 	:  paramList 
+				| *empty*
+
+paramList 		: ID
+				| ID COMMA paramList
+
+
+expression 		:  primary
+				| primary   operator   expression
+  
+primary 		: NUMBERS
+				| STRING
+				| VARIABLE 
+				| VARIABLE  OPAREN  optexpressionList  CPAREN
+				| OPAREN  expression  CPAREN
+
+optexpressionList		: list
+				| *empty*
+
+operator  		: PLUS 
+				| MINUS
+				| DIVIDE
+				| MULTIPLY
+				| MODULO
+				| LT
+				| LE
+				| GT
+				| GE
+				| AND
+				| OR
+				| NOT
+
+expressionList	: expression
+				| expression COMMA expressionList
+
+block 			: OBRAC  statementList	 CBRAC
+
+
+optElse			: ELSE block
+				| *empty*
+
+optInit	  		: ASSIGN expression
+				| *empty*
+
+ifStatement 	: IF OPAREN expression CPAREN block optElse
+
+whileStatement	: WHILE OPAREN expression CPAREN block
+
+ 
+ 
+
+References: 
+http://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form
+http://cs.fit.edu/~ryan/cse4251/mini_java_grammar.html
+

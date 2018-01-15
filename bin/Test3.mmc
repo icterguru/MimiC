@@ -1,0 +1,27 @@
+FUNCTION main()
+{
+ println("Hello, this is my test program");
+
+	FUNC doubleme(x)
+	{ 2 * x; }
+
+ y = doubleme(5);
+
+ println("Double of ", x, " is: ", y);
+  
+	FUNC findmax(x, y)
+	{
+	if (x >= y){
+	println("Max of ", x, " and ", y , " is: ", x);
+	}
+	else{
+	println("Max of ", x, " and ", y , " is: ", y);
+	}
+	}
+	
+	i = 0;
+	while( i < 10){
+	println(i + " ");
+	i = i + 1;
+	}
+}
